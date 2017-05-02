@@ -195,6 +195,7 @@ namespace HoloToolkit.Unity
             BoundedPlane[] planes = planeTask.Result;
 #else
             // In the unity editor, the task class isn't available, but perf is usually good, so we'll just wait for FindPlanes to complete.
+            // NOTE may have to modify planefinding class
             BoundedPlane[] planes = PlaneFinding.FindPlanes(meshData, snapToGravityThreshold, MinArea);
 #endif
 
@@ -255,6 +256,7 @@ namespace HoloToolkit.Unity
                     destPlane.GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 }
 
+                // May be useful later
                 destPlane.transform.parent = planesParent.transform;
                 SurfacePlane surfacePlane = destPlane.GetComponent<SurfacePlane>();
 

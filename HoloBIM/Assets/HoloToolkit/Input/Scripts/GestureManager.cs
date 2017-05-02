@@ -49,9 +49,13 @@ namespace HoloToolkit.Unity
 
         private void GestureRecognizer_TappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
         {
-            if (focusedObject != null)
+            if (focusedObject != null && (focusedObject.GetComponent<BIMComponent>() != null || focusedObject.GetComponent<MenuButton>() != null || focusedObject.GetComponent<MenuItem>() != null))
             {
-                focusedObject.SendMessage("OnSelect");
+                focusedObject.SendMessage("OnSelect", GazeManager.Instance.HitInfo.point);
+            } else
+            {
+                Debug.Log("Deselecting..?");
+                focusedObject.SendMessageUpwards("OnDeselect");
             }
         }
 

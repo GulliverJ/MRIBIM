@@ -5,7 +5,7 @@ using System.Text;
 
 public class ObjExporter
 {
-
+    /*
     public static string MeshToString(MeshFilter mf)
     {
         Mesh m = mf.mesh;
@@ -51,4 +51,5 @@ public class ObjExporter
             sw.Write(MeshToString(mf));
         }
     }
+    */
 }
